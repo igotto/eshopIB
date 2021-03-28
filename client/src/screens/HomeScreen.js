@@ -1,8 +1,27 @@
-import products from '../products';
-import {Row, Col } from 'react-bootstrap';
-import Products from '../components/Product';
+
+import { useState, useEffect } from 'react';
+import { Row, Col } from 'react-bootstrap';
+import Product from '../components/Product';
+
+
 
 const HomeScreen = () => {
+
+    const [products, setProducts] = useState([])
+
+    const baseUrl = '/api/products';
+
+    useEffect(() => {
+
+        const fetchProducts = () => {
+            fetch(baseUrl)
+                .then(response => response.json())
+                .then(data => setProducts(data))
+        }
+
+        fetchProducts()
+    }, [])
+
     return (
         <>
 
@@ -10,11 +29,11 @@ const HomeScreen = () => {
             <Row>
                 {products.map((product) => (
                     <Col key={product._id} sm={12} md={6} lg={3}>
-                        <Products product={product} />
+                        <Product product={product} />
                     </Col>
                 ))}
             </Row>
-            
+
         </>
     );
 }

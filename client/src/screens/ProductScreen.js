@@ -1,11 +1,27 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem } from 'react-bootstrap';
 import Rating from '../components/Rating';
-import products from '../products';
+
 
 const ProductScreen = ({ match }) => {
 
-    const product = products.find(p => p._id === match.params.id)
+    const [product, setProduct] = useState({})
+
+    const productUrl = `/api/products/${match.params.id}`;
+
+    useEffect(() => {
+
+        const fetchProducts = () => {
+            fetch(productUrl)
+                .then(response => response.json())
+                .then(data => setProduct(data))
+        }
+
+        fetchProducts()
+    }, [match, productUrl])
+    
+    
 
     return (
         <>
