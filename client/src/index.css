@@ -1,6 +1,8 @@
+
 main {
   min-height: 80vh;
-  background-color:lightslategray;
+  /* background-image: url('./img/Background.jpg'); */
+  background-color:lightslategray;  
 }
 
 .rating span {
