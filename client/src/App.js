@@ -12,6 +12,7 @@ import ShippingScreen from './screens/ShippingScreen';
 //import background from './img/Background.jpg';
 import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import OrderScreen from './screens/OrderScreen';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <main className="py-3">
           <Container>
             <Switch>
+              <Route path="/order/:id" component={OrderScreen} exact />
               <Route path="/shipping" component={ShippingScreen} exact />
               <Route path="/payment" component={PaymentScreen} exact />
               <Route path="/placeorder" component={PlaceOrderScreen} exact />
